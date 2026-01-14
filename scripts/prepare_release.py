@@ -42,7 +42,7 @@ def prepare_release(version: str, specfile_path: str):
     changelog_file = Path("CHANGELOG.md")
     current_changelog = changelog_file.read_text()
 
-    cmd_tag = ['git', 'tag','--sort=-committerdate']
+    cmd_tag = ['git', 'tag', '--sort=-committerdate', '--merged']
     previoustag = subprocess.Popen(cmd_tag, stdout=subprocess.PIPE).communicate()[0]
     previoustag = previoustag.decode('utf8', 'strict').split('\n')[0]
 
